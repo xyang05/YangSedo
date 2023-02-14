@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    int customer_id, units_consumed;
+    float unit_charges, surcharge, total_bill;
+    
+    // Input customer ID and units consumed
+    printf("Enter customer ID: ");
+    scanf("%d", &customer_id);
+    printf("Enter units consumed: ");
+    scanf("%d", &units_consumed);
+    
+    // Calculate unit charges
+    if (units_consumed >= 600) {
+        unit_charges = 2.00;
+    } else if (units_consumed >= 450) {
+        unit_charges = 1.85;
+    } else if (units_consumed >= 250) {
+        unit_charges = 1.60;
+    } else {
+        unit_charges = 1.50;
+    }
+    
+    // Calculate total bill
+    total_bill = units_consumed * unit_charges;
+    
+    // Add surcharge if applicable
+    if (total_bill > 400) {
+        surcharge = total_bill * 0.15;
+        total_bill += surcharge;
+    } else {
+        surcharge = 0.0;
+    }
+    
+    // Print bill details
+    printf("Customer ID: %d\n", customer_id);
+    printf("Units consumed: %d\n", units_consumed);
+    printf("Unit charges: %.2f pesos\n", unit_charges);
+    printf("Surcharge: %.2f pesos\n", surcharge);
+    printf("Total bill: %.2f pesos\n", total_bill);
+    
+    return 0;
+}
