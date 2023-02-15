@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+// Function to get 5 non-negative integers from user
+void getNumbers(int* num1, int* num2, int* num3, int* num4, int* num5) {
+    printf("Enter 5 non-negative integers:\n");
+    scanf("%d %d %d %d %d", num1, num2, num3, num4, num5);
+    if (*num1 < 0 || *num2 < 0 || *num3 < 0 || *num4 < 0 || *num5 < 0) {
+        printf("Error: Negative numbers not allowed.\n");
+        exit(1);
+    }
+}
+
+// Function to arrange 5 integers in descending order
+void arrangeDescending(int* num1, int* num2, int* num3, int* num4, int* num5) {
+    int i, j, temp;
+    int nums[5] = {*num1, *num2, *num3, *num4, *num5};
+    for (i = 0; i < 4; i++) {
+        for (j = i+1; j < 5; j++) {
+            if (nums[i] < nums[j]) {
+                temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+        }
+    }
+    *num1 = nums[0];
+    *num2 = nums[1];
+    *num3 = nums[2];
+    *num4 = nums[3];
+    *num5 = nums[4];
+}
+
+int main() {
+    int num1, num2, num3, num4, num5;
+
+    // Get 5 integers from user
+    getNumbers(&num1, &num2, &num3, &num4, &num5);
+
+    // Arrange the integers in descending order
+    arrangeDescending(&num1, &num2, &num3, &num4, &num5);
+
+    // Print the integers in descending order
+    printf("The integers in descending order are: %d %d %d %d %d\n", num1, num2, num3, num4, num5);
+
+    return 0;
+}
