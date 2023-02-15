@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int customer_id, unit_consumed;
+    float unit_charges, surcharge, total_bill;
+    
+    printf("Enter customer ID: ");
+    scanf("%d", &customer_id);
+    
+    printf("Enter unit consumed: ");
+    scanf("%d", &unit_consumed);
+    
+    if (unit_consumed > 199 && unit_consumed < 250) {
+        unit_charges = 1.50;
+    } else if (unit_consumed >= 250 && unit_consumed < 450) {
+        unit_charges = 1.60;
+    } else if (unit_consumed >= 450 && unit_consumed < 600) {
+        unit_charges = 1.85;
+    } else if (unit_consumed >= 600) {
+        unit_charges = 2.00;
+    } else {
+        printf("Invalid input: unit consumed should be greater than 199.");
+        return 1;
+    }
+    
+    total_bill = unit_consumed * unit_charges;
+    
+    if (total_bill > 400) {
+        surcharge = total_bill * 0.15;
+    } else if (total_bill > 200) {
+        surcharge = total_bill * 0.10;
+    } else {
+        surcharge = 0;
+    }
+    
+    total_bill += surcharge;
+    
+    printf("\nCustomer ID: %d", customer_id);
+    printf("\nUnit Consumed: %d", unit_consumed);
+    printf("\nUnit Charges: %.2f", unit_charges);
+    printf("\nSurcharge: %.2f", surcharge);
+    printf("\nTotal Bill: %.2f", total_bill);
+    
+    return 0;
+}
